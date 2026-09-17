@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>صدى الطفولة | سوبر مان</title>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@600;900&display=swap" rel="stylesheet">
+    
+    <!-- كود إعلانات البوب أب الأساسي للشبكة -->
+    <script src="https://pl29266276.profitableratecpmnetwork.com/37/9c/25/379c25c3dc70386924751e11786f4647.js"></script>
+
     <style>
         :root { --primary: #00d2ff; --accent: #ff9800; --bg: #0b0f19; --card: #161e2e; }
         * { user-select: none; box-sizing: border-box; }
@@ -21,19 +25,20 @@
         .back-home-btn:hover { background: var(--primary); color: #000; }
 
         .episodes-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(60px, 1fr)); gap: 15px; background: var(--card); padding: 25px; border-radius: 20px; }
-        .ep-btn { background: #252f44; color: white; border: 2px solid transparent; padding: 15px 0; border-radius: 12px; font-size: 1.2rem; font-weight: bold; cursor: pointer; transition: 0.3s; display: flex; align-items: center; justify-content: center; font-family: 'Cairo', sans-serif; text-decoration: none; }
+        .ep-btn { background: #252f44; color: white; border: 2px solid transparent; padding: 15px 0; border-radius: 12px; font-size: 1.1rem; font-weight: bold; cursor: pointer; transition: 0.3s; display: flex; align-items: center; justify-content: center; font-family: 'Cairo', sans-serif; text-decoration: none; }
         .ep-btn:hover { background: var(--primary); transform: scale(1.1); border-color: white; color: #000; }
+        .ep-btn.badge-btn { font-size: 0.9rem; background: #3a2544; border-color: var(--accent); }
 
         .info-text { margin-top: 20px; color: var(--primary); }
         footer { margin-top: 50px; padding: 20px; opacity: 0.4; text-align: center; }
-        @media (max-width: 600px) { .episodes-grid { grid-template-columns: repeat(auto-fill, minmax(50px, 1fr)); gap: 10px; padding: 15px; } .ep-btn { padding: 12px 0; font-size: 1.1rem; } }
+        @media (max-width: 600px) { .episodes-grid { grid-template-columns: repeat(auto-fill, minmax(50px, 1fr)); gap: 10px; padding: 15px; } .ep-btn { padding: 12px 0; font-size: 1rem; } }
     </style>
 </head>
 <body>
 
 <header>
     <h1>كرتون سوبر مان</h1>
-    <p>اختر رقم الحلقة للانتقال إلى صفحة المشاهدة مباشرة</p>
+    <p>اختر رقم الحلقة أو الشارة للانتقال إلى صفحة المشاهدة مباشرة</p>
 </header>
 
 <!-- إعلان البنر العلوي -->
@@ -47,7 +52,7 @@
 
     <h2>اضغط على رقم الحلقة للمشاهدة على الموقع الأصلي:</h2>
     <div class="episodes-grid" id="buttonsGrid"></div>
-    <p class="info-text">جميع حلقات كرتون سوبر مان الـ 29 متوفرة للانتقال والمشاهدة</p>
+    <p class="info-text">جميع حلقات كرتون سوبر مان الـ 29 بالإضافة إلى الشارة متوفرة للانتقال والمشاهدة</p>
 </div>
 
 <!-- إعلان البنر السفلي -->
@@ -70,6 +75,10 @@
             let epId = startEpId + (i - 1);
             links.push(`https://cartoony.net/watch/${seriesId}/${epId}`);
         }
+        
+        // إضافة رابط الشارة (يمكنك استبدال الرابط أدناه بالرابط الفعلي للشارة)
+        links.push("https://www.youtube.com/watch?v=EXAMPLE_INTRO");
+        
         return links;
     }
 
@@ -81,7 +90,12 @@
         btn.className = 'ep-btn'; 
         
         let epNum = index + 1;
-        btn.innerText = epNum;
+        if (epNum === 30) {
+            btn.innerText = "شارة";
+            btn.classList.add('badge-btn');
+        } else {
+            btn.innerText = epNum;
+        }
         
         btn.onclick = function() { 
             window.open(popupAdLink, '_blank');
